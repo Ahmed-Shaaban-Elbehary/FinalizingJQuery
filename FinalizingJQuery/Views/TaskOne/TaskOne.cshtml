@@ -1,0 +1,117 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Finalizing Jquery</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.0/css/bulma.min.css">
+    <script src="https://use.fontawesome.com/10dc425049.js"></script>
+    <script src="~/Scripts/jquery-3.2.1.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <link href="~/Content/themes/base/all.css" rel="stylesheet" />
+    <link href="~/Content/alertify/alertify.core.css" rel="stylesheet" />
+    <link href="~/Content/alertify/alertify.default.css" rel="stylesheet" />
+    <script src="~/Scripts/alertify/alertify.min.js"></script>
+    <script>
+        $(function () {
+            $("#addBtn").on("click", function () {
+                
+                var id = $("#id").val();
+                var name = $("#name").val();
+                var salary = $("#salary").val();
+
+                if (id == '' || name == ''  || salary == '') {
+                    alert("Hello");
+                }
+                else
+                {
+                    $("#myTable tbody").append('<tr class="tr"><td class="td">' + id + '</td><td class="td">' + name + '</td><td class="td">' + salary + '</td><td><input class="deleteBtn button is-danger is-outlined is-fullwidth" type="button" value="Delete" /></td></tr>');
+                }
+
+            });
+
+            $("tbody").on("click", ".deleteBtn", function () {
+
+                $(this).parent().parent().remove();
+
+            });
+
+        });
+    </script>
+</head>
+<body>
+    <section class="hero is-warning">
+        <nav class="navbar" role="navigation" aria-label="main navigation">
+            <ul class="nav navbar-end">
+                <li>
+                    <a href="/TaskOne/TaskOne" class="navbar-item">Task One</a>
+                </li>
+                <li>
+                    <a href="/TaskTwo/TaskTwo" class="navbar-item">Task Two</a>
+                </li>
+                <li>
+                    <a href="/TaskThree/TaskThree" class="navbar-item">Task Three</a>
+                </li>
+                <li>
+                    <a href="/TaskFour/TaskFour" class="navbar-item">Task Four</a>
+                </li>
+                <li>
+                    <a href="/TaskFive/TaskFive" class="navbar-item">Task Five</a>
+                </li>
+                <li>
+                    <a href="/TaskSix/TaskSix" class="navbar-item">Task Six</a>
+                </li>
+                <li>
+                    <a href="/TaskSeven/TaskSeven" class="navbar-item">Task Seven</a>
+                </li>
+            </ul>
+        </nav>
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">
+                    Finalizing Jquery
+                </h1>
+                <h2 class="subtitle">
+                    let's HTML5 be free, and finishing it.
+                </h2>
+            </div>
+        </div>
+    </section>
+    <br /> <br />
+    <div class="container">
+
+        <label class="label">ID</label>
+        <input id="id" type="number" class="input" />
+
+        <label class="label">Name</label>
+        <input id="name" type="text" class="input" />
+
+        <label class="label">Salary</label>
+        <input id="salary" type="number" class="input" />
+
+        <label class="label"></label>
+        <input id="addBtn" type="button" value="Add" class="button is-primary" />
+
+        <br /> <br />
+
+        <table id="myTable" class="table is-fullwidth is-bordered">
+            <thead class="thead">
+                <tr class="tr">
+                    <th class="th">ID</th>
+                    <th class="th">NAME</th>
+                    <th class="th">SALARY</th>
+                </tr>
+            </thead>
+            <tbody class="tbody">
+                
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

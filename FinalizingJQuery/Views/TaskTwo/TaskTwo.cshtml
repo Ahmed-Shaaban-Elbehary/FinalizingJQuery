@@ -1,0 +1,116 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Finalizing Jquery</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.0/css/bulma.min.css">
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
+    <script src="~/Scripts/jquery-3.2.1.min.js"></script>
+    <style>
+        .icon:hover {
+            color: hsl(348, 100%, 61%);
+        }
+    </style>
+    <script>
+
+        $(function () {
+
+            $("#myCourses").on("change", function () {
+
+                var item = $("#myCourses option:selected").text();
+
+                if (item == "Select Course") {
+                    return false;
+                }
+                else {
+                    $("tbody").append('<tr class="tr"><td class="td">' + item + '</td><td class="td"><i class="icon ion-close-round"></i></td></tr>')
+
+                    $("option:selected").hide();
+                }
+                
+            });
+
+            $(".icon").on("click", function () {
+                alert("are you sure");
+            });
+
+        });
+    </script>
+</head>
+<body>
+    <section class="hero is-warning">
+        <nav class="navbar" role="navigation" aria-label="main navigation">
+            <ul class="nav navbar-end">
+                <li>
+                    <a href="/TaskOne/TaskOne" class="navbar-item">Task One</a>
+                </li>
+                <li>
+                    <a href="/TaskTwo/TaskTwo" class="navbar-item">Task Two</a>
+                </li>
+                <li>
+                    <a href="/TaskThree/TaskThree" class="navbar-item">Task Three</a>
+                </li>
+                <li>
+                    <a href="/TaskFour/TaskFour" class="navbar-item">Task Four</a>
+                </li>
+                <li>
+                    <a href="/TaskFive/TaskFive" class="navbar-item">Task Five</a>
+                </li>
+                <li>
+                    <a href="/TaskSix/TaskSix" class="navbar-item">Task Six</a>
+                </li>
+                <li>
+                    <a href="/TaskSeven/TaskSeven" class="navbar-item">Task Seven</a>
+                </li>
+            </ul>
+        </nav>
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">
+                    Finalizing Jquery
+                </h1>
+                <h2 class="subtitle">
+                    let's HTML5 be free, and finishing it.
+                </h2>
+            </div>
+        </div>
+    </section>
+    <br /> <br />
+    <div class="container">
+        <div class="control">
+            <div class="select is-fullwidth">
+                <select id="myCourses">
+                    <option>Select Course</option>
+                    <option>HTML5</option>
+                    <option>CSS3</option>
+                    <option>JAVASCRIPT</option>
+                    <option>ASP.net</option>
+                    <option>C#</option>
+                    <option>MySQL</option>
+                    <option>MVC5</option>
+                </select>
+            </div>
+        </div>
+        <br />
+        <table id="myTable" class="table">
+            <thead class="thead">
+                <tr class="tr">
+                    <th class="th">COURSES SELECTED</th>
+                </tr>
+            </thead>
+            <tbody class="tbody"></tbody>
+        </table>
+
+    </div>
+
+</body>
+</html>
+
+

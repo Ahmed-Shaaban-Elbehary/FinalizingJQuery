@@ -1,0 +1,128 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Finalizing Jquery</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.0/css/bulma.min.css">
+    <script src="~/Scripts/jquery-3.2.1.min.js"></script>
+    <script>
+        $(function () {
+
+            $.ajax({
+                url: "/TaskSix/getCountry",
+                success: function (res) {
+                    $.each(res, function (i, r) {
+                        $("#dropCountry").append("<option value= " + r.id + " >" + r.countryName + "</option>")
+                    });
+                }
+            });
+            
+            $("#dropCountry").change(function () {
+
+                $("#dropCity").empty();
+
+                var upComingValue = $("#dropCountry option:selected").val();
+
+                $.ajax({
+                    url: "/TaskSix/getCity",
+                    data: { CityId: upComingValue },
+                    success: function (res) {
+                        $.each(res, function (i, r) {
+                            $("#dropCity").append("<option value= " + r.id + " >" + r.cityName + "</option>")
+                        });
+                    }
+                });
+
+            });
+
+        });
+    </script>
+</head>
+<body>
+    <section class="hero is-warning">
+        <nav class="navbar" role="navigation" aria-label="main navigation">
+            <ul class="nav navbar-end">
+                <li>
+                    <a href="/TaskOne/TaskOne" class="navbar-item">Task One</a>
+                </li>
+                <li>
+                    <a href="/TaskTwo/TaskTwo" class="navbar-item">Task Two</a>
+                </li>
+                <li>
+                    <a href="/TaskThree/TaskThree" class="navbar-item">Task Three</a>
+                </li>
+                <li>
+                    <a href="/TaskFour/TaskFour" class="navbar-item">Task Four</a>
+                </li>
+                <li>
+                    <a href="/TaskFive/TaskFive" class="navbar-item">Task Five</a>
+                </li>
+                <li>
+                    <a href="/TaskSix/TaskSix" class="navbar-item">Task Six</a>
+                </li>
+                <li>
+                    <a href="/TaskSeven/TaskSeven" class="navbar-item">Task Seven</a>
+                </li>
+            </ul>
+        </nav>
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">
+                    Finalizing Jquery
+                </h1>
+                <h2 class="subtitle">
+                    lets HTML5 be free and finishing it.
+                </h2>
+            </div>
+        </div>
+    </section>
+    <br /> <br />
+    <div class="container">
+        <div class="columns">
+            <div class="column">
+                <div class="field">
+                    <label class="label">Country</label>
+                    <div class="control">
+                        <div class="select is-fullwidth">
+                            <select id="dropCountry">
+                                <option>Select country</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="field">
+                    <label class="label">City</label>
+                    <div class="control">
+                        <div class="select is-fullwidth">
+                            <select id="dropCity">
+                                <option>Select City</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="field">
+                    <label class="label">District</label>
+                    <div class="control">
+                        <div class="select is-fullwidth">
+                            <select id="dropDistrict">
+                                <option>Select district</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
